@@ -4,8 +4,6 @@ class VueJoueurs extends VueGenerique {
 
 
 public function affiche_liste($tab) {
-        echo '<a href="index.php?">Bienvenue </a><br><br>';
-       
         echo '<tr><th><b>Nom des joueurs</b></th></tr><br>';
 
         foreach ($tab as $joueur) {
@@ -16,7 +14,6 @@ public function affiche_liste($tab) {
     }
 
  public function affiche_details($details) {
-        echo '<li><a href="index.php?">Bienvenue</a></li>';
         echo '<h2>Détails du joueur</h2>';
         echo '<p>ID : ' . $details['id'] . '</p>';
         echo '<p>Nom : ' . $details['nom'] . '</p>';
@@ -49,7 +46,13 @@ public function form_ajout() {
     echo '</form>';
 }
 
-   
+    public function confirmAjout() {
+        echo "Joueur bien ajouté !";
+    }
+
+    public function erreurBD() {
+        echo "Erreur lors de l'ajout/modification dans la BD";
+    }
 }
 
 ?>

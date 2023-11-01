@@ -3,7 +3,6 @@ require_once 'vue_generique.php';
 
 class VueEquipes extends VueGenerique {
 	public function liste ($tab_equipes) {
-		echo '<li><a href="index.php?">Bienvenue</a></li>';
 		?>
 		<h1>Liste des joueurs</h1>
 	<ul><?php
@@ -14,7 +13,6 @@ class VueEquipes extends VueGenerique {
 	}
 	
 	public function details($details) {
-        echo '<li><a href="index.php?">Bienvenue</a></li>';
         echo '<h2>Détails de l\'équipe</h2>';
         echo '<p>ID : ' . $details['id'] . '</p>';
         echo '<p>Nom : ' . $details['nom'] . '</p>';

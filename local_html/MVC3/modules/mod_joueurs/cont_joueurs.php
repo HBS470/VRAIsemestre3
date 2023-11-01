@@ -19,7 +19,6 @@ class ContJoueurs {
     }
 
     public function bienvenue() {
-        $this->vue_joueurs->menu($this->action); // Affiche le menu pour l'action 
         echo "<h1>Bienvenue sur notre site !</h1>";
     }
 
@@ -35,43 +34,33 @@ class ContJoueurs {
         }
     }
 
-    public function ajout() {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $nom = isset($_POST['nom']) ? $_POST['nom'] : '';
-        $bio = isset($_POST['bio']) ? $_POST['bio'] : '';
 
-        if (!empty($nom) && !empty($bio)) {
-            if ($this->modele_joueurs->ajouterJoueur($nom, $bio)) {
-                echo "Joueur ajouté avec succès !";
-            } else {
-                echo "Erreur lors de l'ajout du joueur.";
-            }
-        } else {
-            echo "Veuillez remplir tous les champs du formulaire.";
+
+    private function form_ajout () {
+        $this->vue_joueurs->form_ajout();
+    }
+
+    private function ajout () {
+        $nom_joueur = isset ($_POST["nom"]) ? $_POST["nom"] : die("Paramètre manquant");
+        $bio_joueur = isset ($_POST["bio"]) ? $_POST["bio"] : die("Paramètre manquant");
+        if ($this->modele_joueurs->ajouterJoueur($nom_joueur, $bio_joueur)) {
+            $this->vue_joueurs->confirmAjout();
         }
-    } else {
-        echo "Méthode de requête incorrecte. Utilisez POST pour soumettre le formulaire.";
+        else {
+            $this->vue_joueurs->erreurBD();
+        }
     }
-}
-
-
-
-    public function form_ajout() {
-          $this->vue_joueurs->form_ajout();
-    }
-
 
    public function exec() {
     switch ($this->action) {
-        case 'bienvenue':
-            $this->bienvenue();
-            break;
         case 'liste':
             $this->liste();
             break;
         case 'details':
             $this->details();
             break;
+        case 'form_ajout' :
+            $this->form_ajout();
         case 'ajout' :
             $this->ajout();
         default:

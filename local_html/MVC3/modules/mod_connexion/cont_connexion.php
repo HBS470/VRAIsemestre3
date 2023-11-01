@@ -44,29 +44,34 @@ class ContConnexion {
             if ($utilisateur) {
                 $_SESSION['utilisateur'] = $login;
                $this->vue_connexion->connexionReussie();
+                header("Refresh:2;URL=index.php");
             } else {
-                // Affichez un message d'erreur
-            }
+                echo "Erreur de connexion : login ou mot de passe incorrect.";            }
         }
     }
-
     public function inscription(){
         $this->vue_connexion->form_inscription();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $login = $_POST['login'];
             $motDePasse = $_POST['password'];
-            $hash = password_hash($motDePasse, PASSWORD_DEFAULT);
-            $this->modele_connexion->ajouterUtilisateur($login, $hash);
-        }
-        
+            if (!$this->modele_connexion->verifierUser($login, $motDePasse)){
+                $hash = password_hash($motDePasse, PASSWORD_DEFAULT);
+                $this->modele_connexion->ajouterUtilisateur($login, $hash);
+                $this->vue_connexion->inscriptionReussie();
+                header("Refresh:2;URL=index.php");
+            }
+            else {
+                echo 'Utilisateur existe déjà';
+            }
 
+
+        }
     }
     public function deconnexion(){
-        echo '<li><a href="index.php?">Bienvenue</a></li>';
-        session_start();
         session_unset();
         session_destroy();
         echo 'Vous êtes deconnecté !';
+        header("Refresh:1;URL=index.php");
     }
 }
 ?>

@@ -13,7 +13,7 @@ class ModeleConnexion extends Connexion {
         if ($user && password_verify($mdp, $user['password'])) {
             return $user;
         } else {
-            return "L'utilisateur n'existe pas";
+            return false;
         }
     }
 
