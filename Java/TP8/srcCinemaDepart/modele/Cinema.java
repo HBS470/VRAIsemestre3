@@ -65,11 +65,7 @@ public class Cinema {
 	return salles;
     }
 
-    public void acheter(int nbBillets, int numSalle)
-	    throws ErreurSalle, NombrePlacesErreur, ErreurSeanceEnCours {
-	Salle s = this.getSalle(numSalle);
-	s.acheterSeanceEnCours(nbBillets);
-    }
+
 
     public void cloturerSeanceEnCours(int numSalle)
 	    throws ErreurSeanceEnCours, ErreurSalle {

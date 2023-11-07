@@ -70,10 +70,10 @@ public class VueCinema {
 		System.out.println(leCinema);
 		break;
 	    }
-		case (6): {
-    	invocateur.undo();
-		break;
-		}
+//		case (6): {
+//    	invocateur.undo();
+//		break;
+//		}
 
 	    case (7): {
 		System.out.println("au revoir");
