@@ -1,5 +1,6 @@
 package modele;
 
+import CinemaExceptions.CinemaException;
 import CinemaExceptions.ErreurSalle;
 import CinemaExceptions.ErreurSeanceEnCours;
 import CinemaExceptions.NombrePlacesErreur;
@@ -12,7 +13,10 @@ public class Commande {
         this.nom = nom;
     }
 
-    public void executer() throws NombrePlacesErreur, ErreurSalle, ErreurSeanceEnCours {
+    public Commande() {
+    }
+
+    public void executer() throws CinemaException {
 
     }
 

@@ -4,11 +4,12 @@ class VueJoueurs extends VueGenerique {
 
 
 public function affiche_liste($tab) {
-        echo '<tr><th><b>Nom des joueurs</b></th></tr><br>';
-
+    ?>
+    <h1>Liste des joueurs</h1>
+    <?php
         foreach ($tab as $joueur) {
             echo '<table>';
-            echo '<a href="index.php?module=joueurs&action=details&id=' . $joueur['id'] . '">' . $joueur['nom'] . '</a><br>';
+            echo '<a href="index.php?module=joueurs&action=details&id=' . $joueur['id'] . ' " style="text-decoration:none">' . $joueur['nom'] . '</a><br>';
         }
         echo'<br>';
     }

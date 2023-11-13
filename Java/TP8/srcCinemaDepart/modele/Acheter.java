@@ -1,8 +1,6 @@
 package modele;
 
-import CinemaExceptions.ErreurSalle;
-import CinemaExceptions.ErreurSeanceEnCours;
-import CinemaExceptions.NombrePlacesErreur;
+import CinemaExceptions.CinemaException;
 
 public class Acheter extends Commande {
     private int nbBillets;
@@ -16,8 +14,11 @@ public class Acheter extends Commande {
         this.leCinema = c;
     }
 
+    public Acheter() {
+    }
+
     @Override
-    public void executer() throws NombrePlacesErreur,ErreurSalle, ErreurSeanceEnCours{
+    public void executer() throws CinemaException {
         Salle s = leCinema.getSalle(numSalle);
         s.acheterSeanceEnCours(nbBillets);
     }

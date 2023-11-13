@@ -1,16 +1,21 @@
 package modele;
 
+import CinemaExceptions.CinemaException;
+
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class Invocateur {
     private ArrayList<Commande> commandes;
 
-    public Invocateur(ArrayList<Commande> commandes) {
-        this.commandes = commandes;
+
+    public Invocateur() {
+        this.commandes = new ArrayList<>();
     }
 
-    public void enregistrer(Commande commande) {
+    public void enregistrer(Commande commande) throws CinemaException {
         commandes.add(commande);
+        commande.executer();
     }
 
     public void undo(){
