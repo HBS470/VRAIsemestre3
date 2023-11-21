@@ -1,5 +1,6 @@
 package SourceDepart;
 
+import java.util.ArrayList;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -17,6 +18,12 @@ public class LancementLambdas {
         Produit p120et30 = new Produit(120, 30);
         Produit p112et40 = new Produit(112, 40);
         Produit p120et30Bis = new Produit(120, 30);
+
+        ArrayList<Gens> lesGens = new ArrayList<>();
+        lesGens.add(a);
+        lesGens.add(b);
+        lesGens.add(c);
+        lesGens.add(d);
 
         // completez avec des lambdas expressions et eventuellement le type de
         // la variable.:
@@ -90,14 +97,34 @@ public class LancementLambdas {
         // // 10 : utiliser andThen pour que f4 prenne un gens et retourne le
         // double de
         // // son age.
-//         Function<Gens, Integer> f = g -> g.getAge();
-//         Function<Gens, Integer> f4 = f.andThen(g -> g*2);
+//         Function<Gens, Integer> f4 = ((Function<Gens,Integer>) g -> g.getAge()).andThen(g -> g*2);
 //         System.out.println(f4.apply(a));
 //         System.out.println(f4.apply(c));
 
         // // 11 typer :
-         Function<Gens,Character> f5 = ((Function<Gens, String>) x -> x.getNom()).andThen(y -> y.charAt(0));
-         System.out.println(f5.apply(a));
-         System.out.println(f5.apply(d));
+//         Function<Gens,Character> f5 = ((Function<Gens, String>) x -> x.getNom()).andThen(y -> y.charAt(0));
+//         System.out.println(f5.apply(a));
+//         System.out.println(f5.apply(d));
+
+        // Exercice 4
+        // 3
+        Function<Gens, Gens> f6 = g -> new Gens(g.getNom(),g.getAge()+2);
+        System.out.println(lesGens);
+        System.out.println();
+        System.out.println("Age + 2 : ");
+        System.out.println(appliquerAChacun(lesGens,f6));
+
+        Function <Gens,Gens> f7 = g -> new Gens(g.getNom().toUpperCase(),g.getAge());
+        System.out.println();
+        System.out.println("Nom en Majuscule : ");
+        System.out.println(appliquerAChacun(lesGens,f7));
+    }
+
+    public static ArrayList<Gens> appliquerAChacun(ArrayList<Gens> l, Function<Gens, Gens> f){
+        ArrayList<Gens> result = new ArrayList<>();
+        for (Gens g : l) {
+            result.add(f.apply(g));
+        }
+        return result;
     }
 }
