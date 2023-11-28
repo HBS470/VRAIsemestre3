@@ -12,7 +12,7 @@ public class Dessin extends Forme {
         formes.add(f);
     }
 
-    public void translate ( int dx, int dy){
+    public void translate (int dx, int dy){
             for (Forme f : formes){
                 f.translate (dx,dy);
             }
