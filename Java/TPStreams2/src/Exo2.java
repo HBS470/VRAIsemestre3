@@ -21,7 +21,7 @@ public class Exo2 {
 
         // 2
         System.out.println(petit2(coll));
-        //System.out.println(petit2(vide));
+        System.out.println(petit2(vide));
 
         // 3
         System.out.println(petit3(coll));
