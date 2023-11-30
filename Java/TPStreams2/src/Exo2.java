@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -19,18 +20,52 @@ public class Exo2 {
         System.out.println(lo.stream().findFirst());
 
         // 2
-        Optional<Gens> result = coll.stream().findAny();
-        System.out.println(result);
-
-        Optional<Gens> resultvide = vide.stream().findAny();
-        System.out.println(resultvide);
+        System.out.println(petit2(coll));
+        //System.out.println(petit2(vide));
 
         // 3
-        Optional<Gens> result2 = coll.stream().findAny();
-        System.out.println(result2.get());
+        System.out.println(petit3(coll));
+        //System.out.println(petit3(vide));
 
         // 4
+        petit4(coll);
+        //petit4(vide);
+
+        // 5 
+        System.out.println(petit5(coll));
+
+        // 6
+        System.out.println(petit6(coll));
+
+    }
+    public static Optional<Gens> petit2(Collection<Gens> liste){
+        return liste.stream().findAny();
         
+    }
+
+    public static Gens petit3 (Collection<Gens> liste){
+        Optional <Gens> result = liste.stream().findAny();
+        return result.get();
+    }
+
+    public static void petit4 (Collection<Gens> liste){
+        if (liste.isEmpty()) {
+            System.out.println("impossible");
+        }
+        else {
+        System.out.println(liste.stream().findAny());
+        }
+    }
+
+    public static Gens petit5 (Collection<Gens> liste){
+        List<Gens> lo = liste.stream().filter(g -> g.getNom().startsWith("t")).collect(Collectors.toList());
+        return lo.stream().findAny().get();
+
+    }
+
+    public static Gens petit6 (Collection<Gens> liste) {
+        List<Gens> lo = liste.stream().filter(g -> g.getAge() >= 18).collect(Collectors.toList());
+        return lo.stream().findAny().get();
 
     }
 }
