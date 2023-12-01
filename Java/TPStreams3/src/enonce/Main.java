@@ -9,11 +9,15 @@ public class Main {
         Module m21 = new Module("M21", Niveau.S2);
         Module m22 = new Module("M22", Niveau.S2);
         Module m31 = new Module("M31",Niveau.S3);
+        
         Etudiant e1 = new Etudiant("toto", Arrays.asList(new Note(m11, 10),
         new Note(m12, 8), new Note(m21, 5), new Note(m22, 5), new Note(m31,15)));
         Etudiant e2 = new Etudiant("Horeb", Arrays.asList(new Note(m31, 9),new Note(m11,8)));
+        Etudiant e3 = new Etudiant("Amine",Arrays.asList(new Note(m22,10)));
         
-        Promo p1 = new Promo("Info", Arrays.asList(e1,e2));
+        Promo p1 = new Promo("Info", Arrays.asList(e1,e2,e3));
+       
+       
         // 1
         System.out.println(e1.note(m21));
         // 2

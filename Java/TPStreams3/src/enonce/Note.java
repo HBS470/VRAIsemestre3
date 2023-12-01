@@ -1,5 +1,4 @@
 package enonce;
-import java.util.Optional;
 
 public class Note {
 
