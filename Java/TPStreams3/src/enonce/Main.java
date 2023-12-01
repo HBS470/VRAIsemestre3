@@ -13,11 +13,12 @@ public class Main {
         Etudiant e1 = new Etudiant("toto", Arrays.asList(new Note(m11, 10),
         new Note(m12, 8), new Note(m21, 5), new Note(m22, 5), new Note(m31,15)));
         Etudiant e2 = new Etudiant("Horeb", Arrays.asList(new Note(m31, 9),new Note(m11,8)));
-        Etudiant e3 = new Etudiant("Amine",Arrays.asList(new Note(m22,10)));
+        Etudiant e3 = new Etudiant("Amine",Arrays.asList(new Note(m22,10),new Note(m31,12)));
         
         Promo p1 = new Promo("Info", Arrays.asList(e1,e2,e3));
        
-       
+        // Exercice 1
+        
         // 1
         System.out.println(e1.note(m21));
         // 2
@@ -27,7 +28,7 @@ public class Main {
         // 4
         System.out.println(e1.aLaMoyenneauxModulesS1());
         // 5
-        //System.out.println(e1.lesNiveauxIncomplets());
+        System.out.println(e1.lesNiveauxIncomplets());
         // 6
         System.out.println(e1.unNomDeModuleDeS2Rate());
         // 7

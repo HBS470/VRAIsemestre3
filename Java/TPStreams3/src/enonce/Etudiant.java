@@ -74,7 +74,9 @@ public class Etudiant {
     public double moyenneReduce(){
         double somme = notes.stream().map(g -> g.getVal()).reduce(0,(x,y)->x+y);
         long total = notes.stream().map(g -> g.getVal()).reduce(0,(x,y)->x+1);
-
+         if (total == 0) {
+            return 0;
+        }
         return somme/total;
     }
 
@@ -85,8 +87,10 @@ public class Etudiant {
     public double moyenne(Niveau niv){
         double somme = notes.stream().filter(m -> m.getModule().getNiveau() == niv).map(g -> g.getVal()).reduce(0,(x,y)->x+y);
         long total = notes.stream().filter(m -> m.getModule().getNiveau() == niv).map(g -> g.getVal()).count();
-
-        return somme/total;
+        if (total == 0) {
+            return 0;
+        }
+        return total > 0 ? somme/total : 0;
     }
 
     public List<String> lesModulesObtenues(){
