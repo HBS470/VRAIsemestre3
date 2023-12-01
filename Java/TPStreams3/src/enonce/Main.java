@@ -11,7 +11,9 @@ public class Main {
         Module m31 = new Module("M31",Niveau.S3);
         Etudiant e1 = new Etudiant("toto", Arrays.asList(new Note(m11, 10),
         new Note(m12, 8), new Note(m21, 5), new Note(m22, 5), new Note(m31,15)));
-
+        Etudiant e2 = new Etudiant("Horeb", Arrays.asList(new Note(m31, 9),new Note(m11,8)));
+        
+        Promo p1 = new Promo("Info", Arrays.asList(e1,e2));
         // 1
         System.out.println(e1.note(m21));
         // 2
@@ -36,6 +38,12 @@ public class Main {
         System.out.println(e1.meilleurNoteMaxBy());
         // 11
         System.out.println(e1.lesNotesParNiveau());
+
+        // Exercice 2
+        // 1
+        System.out.println(p1.lesNomsDesEtudiantsRecus(m31));
+        // 2
+        System.out.println(p1.nomMajorS1());
     }
     
 }
