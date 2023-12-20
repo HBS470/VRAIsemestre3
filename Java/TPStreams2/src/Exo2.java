@@ -49,23 +49,21 @@ public class Exo2 {
     }
 
     public static void petit4 (Collection<Gens> liste){
-        if (liste.isEmpty()) {
+        Optional<Gens> verif = liste.stream().findAny();
+        if (!verif.isPresent()) {
             System.out.println("impossible");
         }
         else {
-        System.out.println(liste.stream().findAny());
+            System.out.println(verif.get());
         }
     }
 
     public static Gens petit5 (Collection<Gens> liste){
-        List<Gens> lo = liste.stream().filter(g -> g.getNom().startsWith("t")).collect(Collectors.toList());
-        return lo.stream().findAny().get();
-
+        return liste.stream().filter(g -> g.getNom().startsWith("t")).findAny().get();
     }
 
-    public static Gens petit6 (Collection<Gens> liste) {
-        List<Gens> lo = liste.stream().filter(g -> g.getAge() >= 18).collect(Collectors.toList());
-        return lo.stream().findAny().get();
+    public static String petit6 (Collection<Gens> liste) {
+        return liste.stream().filter(g -> g.getAge() >= 18).map(g -> g.getNom()).findAny().get();
 
     }
 }

@@ -24,7 +24,7 @@ public class Exo3 {
         // 3
         List<Integer>l = Arrays.asList(4, 5, 7, 4, 3, 8, 3);
         Optional<Integer>nbre1 = l.stream().reduce((x, y)->x + 1);
-        System.out.println(nbre1.get ());
+        System.out.println(nbre1.get());
         /* C'est 10 qui s'affiche car x prend comme valeur la première valeur du tableau donc 4 */
         
         // 4
@@ -34,11 +34,10 @@ public class Exo3 {
         System.out.println(petit5(coll));
     }
 
-    public static Optional<String> petit5(Collection <Gens> liste){
-        Optional<String> nom = liste.stream().filter(g -> g.getAge() == 20).map(g -> g.getNom()).reduce((p1,p2) -> p1 + " ," + p2);
-        return nom;
+    public static String petit5(Collection <Gens> liste){
+        return liste.stream().filter(g -> g.getAge() == 20).map(g -> g.getNom()).reduce((p1,p2) -> p1 + ", " + p2).get();
+
 
     }
 
-    
 }

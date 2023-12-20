@@ -1,13 +1,11 @@
 package enonce;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Etudiant {
     public static int compteur = 0;
@@ -81,7 +79,7 @@ public class Etudiant {
     }
 
     public double moyenneAveringInt(){
-        return notes.stream().map(m -> m.getVal()).collect(Collectors.averagingInt(note -> note.intValue()));
+        return notes.stream().collect(Collectors.averagingInt(note -> note.getVal()));
     }
 
     public double moyenne(Niveau niv){

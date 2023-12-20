@@ -1,0 +1,43 @@
+Pour la Machine Client (dans le réseau Interne)
+
+Langage Naturel:
+
+    Ajouter une route par défaut sur Client pour envoyer tout le trafic non local à RouteurInterne 
+pour qu'il puisse être dirigé soit vers Internet soit vers le réseau DMZ.
+
+    Assurer que le trafic destiné au réseau DMZ utilise le RouteurInterne comme passerelle.
+
+
+Lignes De Routage Pour La Machine Client
+
+	Route par Défaut (Tout le trafic non-local):
+
+	    Destination: default
+	    Passerelle: 192.168.1.254 (Adresse de RouteurInterne)
+	    Interface : eth0
+route add -net default gw 192.168.1.254 dev eth0
+
+Pour la Machine ServWeb (dans le réseau DMZ)
+
+    Ajouter une route par défaut sur ServWeb 
+pour envoyer tout le trafic non local à RouteurExterne pour qu'il puisse être dirigé vers Internet.
+
+    Ajouter une route spécifique sur ServWeb 
+pour le trafic destiné au réseau Interne en utilisant le RouteurInterne comme passerelle.
+
+Lignes de Routage pour la Machine ServWeb
+
+	Route par Défaut (Tout le trafic non-local):
+
+	    Destination: default
+	    Passerelle: 172.16.0.254 (Adresse de RouteurExterne)
+	    Interface: [interface réseau de ServWeb]
+route add -net default gw 172.16.0.254 dev eth0
+
+	Route vers le réseau Interne:
+
+	    Destination: 192.168.1.0/24 (Réseau Interne)
+	    Passerelle: 172.16.0.1 (Adresse de RouteurInterne)
+	    Masque de réseau: 255.255.255.0 (pour un préfixe /24)
+	    Interface: eth0
+route add -net 192.168.1.0/24 gw 172.16.0.1 dev eth0
