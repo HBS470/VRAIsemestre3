@@ -107,10 +107,10 @@ public class DepartementTest {
 	assertArrayEquals(tabAttendu, tab);
     }
 
-//    @Test
-//    public void testNbreResponsable() {
-//	assertEquals(3, info.nbreResponsable());
-//    }
+    @Test
+    public void testNbreResponsable() {
+	assertEquals(3, info.nbreResponsable());
+    }
 //
 //    @Test
 //    public void testenseignantsSansHeuresCompTrieHeuresFaitesPuisNom() throws Exception {

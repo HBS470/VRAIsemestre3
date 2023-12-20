@@ -23,7 +23,16 @@ public  class Enseignant {
     }
 
  
+    public int compare(Enseignant e2) {
+        return this.getNom().compareTo(e2.getNom());
+    }
 
+    public int compareNomPuisId(Enseignant e2){
+        if (this.getNom().compareTo(e2.getNom()) == 0) {
+            return this.getIdentifiant() - e2.getIdentifiant();
+        }
+        return this.getNom().compareTo(e2.getNom());
+    }
     @Override
     public String toString() {
 	return ( nom );

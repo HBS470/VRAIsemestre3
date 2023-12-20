@@ -59,17 +59,45 @@ public class Departement {
         return lesCours;
     }
   
-    public Collection<Enseignant> NomsEnseignants() {
-        SortedSet<Enseignant> noms = new TreeSet<Enseignant>((c1,c2) -> {
-            if (c1.getNom().compareTo(c2.getNom()) == 0){
-                return c2.getNom().compareTo(c1.getNom());
-            }
-            return c1.getNom().compareTo(c2.getNom());
-        });
+    public Collection<Enseignant> nomsEnseignants() {
+        SortedSet<Enseignant> noms = new TreeSet<Enseignant>((c1,c2) -> c1.compare(c2));
         noms.addAll(this.enseignants);
         return noms;
     }
-  
- 
-   
+
+    public Collection<Enseignant> lesResponsables() {
+        Set<Enseignant> lesIntitules = new HashSet<Enseignant>();
+        for (Cours c : lesCours) {
+            lesIntitules.add(c.getResponsable());
+        }
+        return lesIntitules;
+    }
+
+    public Collection<String> lesNomsCoursDeEnseignant(String nom) {
+        Set<String> lesIntitules = new HashSet<String>();
+        for (Cours c : lesCours) {
+            if (c.getResponsable().getNom().equals(nom)) {
+                lesIntitules.add(c.getIntitule());
+            }
+        }
+        return lesIntitules;
+    }
+
+    public Collection<Enseignant> lesResponsablesL2NomPuisIdentifiant(){
+        SortedSet<Enseignant> responsables = new TreeSet<Enseignant>((c1,c2) -> c1.compareNomPuisId(c2));
+        for (Cours c : lesCours) {
+            if (c.getNiveau() == Niveau.L2) {
+                responsables.add(c.getResponsable());
+            }
+        }
+        return responsables;
+    }
+
+    public int nbreResponsable(){
+       return lesResponsables().size();
+    }
+
+    public Collection<Enseignant> enseignantsSansHeuresCompTrieHeuresFaitesPuisNom() {
+
+    }
 }

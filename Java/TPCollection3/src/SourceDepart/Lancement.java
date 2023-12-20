@@ -62,6 +62,8 @@ public class Lancement {
 	info.ajouter(c15);
 	System.out.println( info);
 
+		System.out.println(info.nomsEnseignants());
+
 	
 
 	
