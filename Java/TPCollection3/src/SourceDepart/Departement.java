@@ -97,7 +97,9 @@ public class Departement {
        return lesResponsables().size();
     }
 
-    public Collection<Enseignant> enseignantsSansHeuresCompTrieHeuresFaitesPuisNom() {
+    public Collection<Enseignant> enseignantsSansHeuresCompTrieHeuresFaitesPuisNom(){
 
     }
-}
+
+    }
+

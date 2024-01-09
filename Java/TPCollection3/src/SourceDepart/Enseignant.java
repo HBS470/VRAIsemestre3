@@ -33,6 +33,8 @@ public  class Enseignant {
         }
         return this.getNom().compareTo(e2.getNom());
     }
+
+
     @Override
     public String toString() {
 	return ( nom );
